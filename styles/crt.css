@@ -1,0 +1,318 @@
+/* ==========================================================================
+   PIP-OS — crt.css
+   CRT effects: scanlines, bloom, flicker, vignette, curvature.
+   All disabled under prefers-reduced-motion.
+   ========================================================================== */
+
+.screen::after {
+  /* Scanline overlay */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0px,
+      rgba(0, 0, 0, 0) 2px,
+      rgba(0, 0, 0, 0.18) 3px,
+      rgba(0, 0, 0, 0.18) 4px
+    );
+  mix-blend-mode: multiply;
+  animation: scanline-drift 8s linear infinite;
+}
+
+.screen::before {
+  /* Vignette + faint phosphor wash + flicker */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 91;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.6) 100%),
+    linear-gradient(180deg, var(--phosphor-glow), transparent 30%, transparent 70%, var(--phosphor-glow));
+  mix-blend-mode: screen;
+  animation: flicker 5.7s steps(120) infinite;
+  opacity: 0.4;
+}
+
+@keyframes scanline-drift {
+  from { background-position: 0 0; }
+  to   { background-position: 0 32px; }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 0.40; }
+  3%       { opacity: 0.35; }
+  6%       { opacity: 0.42; }
+  10%      { opacity: 0.38; }
+  20%      { opacity: 0.40; }
+  21%      { opacity: 0.30; }
+  22%      { opacity: 0.42; }
+  50%      { opacity: 0.36; }
+  73%      { opacity: 0.41; }
+  76%      { opacity: 0.32; }
+}
+
+/* Phosphor bloom — applied to text inside the screen */
+.screen,
+.screen * {
+  text-shadow:
+    0 0 1px var(--phosphor-glow),
+    0 0 4px var(--phosphor-glow),
+    0 0 10px var(--phosphor-glow);
+}
+
+/* Subtle screen curvature feel via inset shadow */
+.screen {
+  background-image:
+    radial-gradient(ellipse at center, transparent 60%, rgba(0,0,0,0.4) 100%);
+}
+
+/* Power-on flash */
+.screen.poweron {
+  animation: poweron 600ms ease-out 1;
+}
+@keyframes poweron {
+  0%   { transform: scaleY(0.001); filter: brightness(2); opacity: 0; }
+  20%  { transform: scaleY(0.02);  opacity: 1; }
+  60%  { transform: scaleY(1.0);   filter: brightness(1.4); }
+  100% { transform: scaleY(1.0);   filter: brightness(1); }
+}
+
+/* Reduced motion: kill all animation */
+@media (prefers-reduced-motion: reduce) {
+  .screen::after,
+  .screen::before {
+    animation: none;
+  }
+  .screen.poweron {
+    animation: none;
+  }
+}
+
+/* Static / "Please Stand By" overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  font-family: var(--font-pip);
+  color: var(--phosphor);
+  background: var(--phosphor-deep);
+  font-size: 36px;
+  letter-spacing: 4px;
+}
+
+.overlay.standby {
+  /* Test-card bars in phosphor tones — Pip-Boy stays monochrome */
+  background:
+    repeating-linear-gradient(
+      to right,
+      var(--phosphor-deep) 0 14%,
+      var(--phosphor-line) 14% 28%,
+      var(--phosphor-mid)  28% 42%,
+      var(--phosphor-dim)  42% 56%,
+      var(--phosphor)      56% 70%,
+      var(--phosphor-dim)  70% 84%,
+      var(--phosphor-line) 84% 100%
+    );
+  color: var(--phosphor-deep);
+  text-shadow: 0 0 0 var(--phosphor-deep);
+}
+.overlay.standby::after {
+  content: "PLEASE STAND BY";
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--phosphor-deep);
+  color: var(--phosphor);
+  padding: 14px 36px;
+  font-family: var(--font-mono);
+  letter-spacing: 6px;
+  border: 1px solid var(--phosphor);
+}
+
+.overlay.screensaver {
+  background: var(--phosphor-deep);
+}
+.overlay.screensaver .ss-vb {
+  width: 120px;
+  height: 120px;
+  background-image: var(--vault-boy-svg, none);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  animation: dvd-bounce-x 7.3s linear infinite, dvd-bounce-y 5.1s linear infinite;
+  filter: drop-shadow(0 0 8px var(--phosphor));
+}
+@keyframes dvd-bounce-x {
+  0%, 100% { left: 0; }
+  50%      { left: calc(100% - 120px); }
+}
+@keyframes dvd-bounce-y {
+  0%, 100% { top: 0; }
+  50%      { top: calc(100% - 120px); }
+}
+
+.overlay.stranger {
+  background: transparent;
+  display: block;
+}
+.overlay.stranger .silhouette {
+  position: absolute;
+  bottom: 8%;
+  left: 6%;
+  width: 90px;
+  height: 140px;
+  background:
+    radial-gradient(ellipse at 50% 18%, var(--phosphor) 18px, transparent 19px),
+    linear-gradient(180deg, transparent 30%, var(--phosphor) 30%);
+  filter: blur(0.5px) drop-shadow(0 0 6px var(--phosphor));
+  opacity: 0.85;
+  animation: stranger-fade 1500ms ease-out forwards;
+}
+@keyframes stranger-fade {
+  0%   { opacity: 0; transform: translateY(8px); }
+  20%  { opacity: 0.9; transform: translateY(0); }
+  85%  { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
+/* Codsworth helper */
+.codsworth {
+  position: absolute;
+  bottom: 60px;
+  right: 20px;
+  z-index: 150;
+  font-family: var(--font-pip);
+  color: var(--phosphor);
+  background: var(--phosphor-deep);
+  border: 1px solid var(--phosphor);
+  padding: 8px 12px;
+  max-width: 220px;
+  font-size: 16px;
+  animation: float 3s ease-in-out infinite;
+}
+.codsworth::before {
+  content: "🔵";  /* rendered as char fallback if Mr. Handy SVG missing */
+  margin-right: 6px;
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-6px); }
+}
+
+/* Toast achievements */
+.toasts {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 250;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+.toast {
+  background: var(--phosphor-deep);
+  border: 2px solid var(--phosphor);
+  color: var(--phosphor);
+  font-family: var(--font-pip);
+  font-size: 18px;
+  padding: 8px 14px;
+  min-width: 220px;
+  animation: toast-in 220ms ease-out, toast-out 320ms ease-in 2700ms forwards;
+}
+.toast .t-title { font-weight: bold; letter-spacing: 1px; }
+.toast .t-sub   { font-size: 14px; opacity: 0.85; }
+@keyframes toast-in  { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes toast-out { to   { transform: translateX(120%); opacity: 0; } }
+
+/* Console (~) */
+.console {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 240;
+  background: rgba(0,0,0,0.92);
+  color: var(--phosphor);
+  font-family: var(--font-mono);
+  font-size: 16px;
+  padding: 8px 12px;
+  border-top: 1px solid var(--phosphor);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  gap: 0 6px;
+  max-height: 50%;
+  overflow: hidden;
+}
+.console .prompt { grid-column: 1; grid-row: 1; }
+.console input {
+  grid-column: 2; grid-row: 1;
+  background: transparent;
+  border: 0;
+  color: var(--phosphor);
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+}
+.console .out {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-top: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* GOD MODE banner */
+.godmode-banner {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 220;
+  background: var(--phosphor);
+  color: var(--phosphor-deep);
+  font-family: var(--font-mono);
+  font-weight: bold;
+  letter-spacing: 4px;
+  padding: 4px 16px;
+  pointer-events: none;
+}
+
+/* Radroach */
+.radroach {
+  position: absolute;
+  z-index: 210;
+  width: 14px;
+  height: 7px;
+  background: var(--phosphor-dim);
+  border-radius: 50%;
+  cursor: pointer;
+  filter: drop-shadow(0 0 3px var(--phosphor));
+}
+.radroach::before, .radroach::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 1px;
+  background: var(--phosphor-dim);
+  top: 50%;
+}
+.radroach::before { left: -3px; transform: rotate(-25deg); }
+.radroach::after  { right: -3px; transform: rotate( 25deg); }
+
+/* Inverted ("Nuclear Winter") palette */
+[data-nuclear="1"] .screen {
+  filter: invert(1) hue-rotate(180deg);
+}

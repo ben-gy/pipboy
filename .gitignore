@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+
+# Editor
+.vscode/
+.idea/
+
+# Local override assets (user-supplied images they may want to keep private)
+assets/img/*.png
+assets/img/*.jpg
+assets/img/*.jpeg
+assets/img/*.gif
+assets/img/*.webp
+!assets/img/README.md
+
+# Dependency dirs (we have none, but keep these out anyway)
+node_modules/
+
+# Build/temp
+.cache/
+*.log

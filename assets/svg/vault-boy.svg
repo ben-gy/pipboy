@@ -1,0 +1,230 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" width="240" height="320" aria-label="Vault Dweller mascot — original homage by Ben Richardson">
+  <!--
+    Original mascot illustration. NOT a trace of Bethesda artwork.
+    Designed in the spirit of mid-century commercial mascots so it sits
+    visually adjacent to Fallout's Pip-Boy aesthetic without copying.
+  -->
+  <defs>
+    <style>
+      .ink   { fill: currentColor; }
+      .skin  { fill: currentColor; opacity: 0.55; }
+      .suit  { fill: currentColor; opacity: 0.30; }
+      .hi    { fill: currentColor; opacity: 0.18; }
+      .out   { fill: none; stroke: currentColor; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+      .out-thin { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <!-- ===== HEAD GROUP ===== -->
+  <g>
+    <!-- Skull silhouette: egg-shaped with a distinct square chin -->
+    <path class="skin" d="
+      M 70 96
+      C 70 60, 100 40, 120 40
+      C 144 40, 172 60, 172 96
+      L 172 132
+      C 172 152, 162 168, 150 174
+      L 150 192
+      Q 150 200, 142 200
+      L 98 200
+      Q 90 200, 90 192
+      L 90 174
+      C 78 168, 70 152, 70 132
+      Z" />
+
+    <!-- Cheek shading (lower-left) for dimension -->
+    <path class="hi" d="
+      M 78 130 Q 84 158, 102 174 L 100 196 Q 80 188, 76 162 Z" />
+
+    <!-- Hair: chunky tuft + side -->
+    <path class="ink" d="
+      M 96 50
+      C 102 28, 124 26, 134 40
+      C 144 26, 162 32, 168 52
+      C 162 60, 144 56, 134 64
+      C 124 56, 108 60, 96 50 Z" />
+
+    <!-- Hair side wisp -->
+    <path class="ink" d="
+      M 70 90 Q 76 70, 96 68 Q 86 84, 78 100 Z" />
+
+    <!-- Ears -->
+    <path class="skin" d="
+      M 70 116 Q 56 118, 58 134 Q 60 148, 72 144 Z" />
+    <path class="skin" d="
+      M 172 116 Q 186 118, 184 134 Q 182 148, 170 144 Z" />
+    <circle class="ink" cx="64" cy="130" r="2" />
+    <circle class="ink" cx="178" cy="130" r="2" />
+
+    <!-- Eyebrows (raised, friendly) -->
+    <path class="ink" d="M 92 96 Q 102 88, 116 96" />
+    <path class="ink" d="M 128 96 Q 142 88, 152 96" />
+
+    <!-- Eyes: large white(-ish) with bold pupils. In our monochrome,
+         "white" is shown by punching out the skin fill with `out` outlines. -->
+    <ellipse cx="105" cy="112" rx="9" ry="7" fill="currentColor" opacity="0.05" stroke="currentColor" stroke-width="1.6"/>
+    <ellipse cx="139" cy="112" rx="9" ry="7" fill="currentColor" opacity="0.05" stroke="currentColor" stroke-width="1.6" class="wink-eye"/>
+    <circle class="ink" cx="106" cy="113" r="3"/>
+    <circle class="ink" cx="140" cy="113" r="3" class="wink-pupil"/>
+
+    <!-- Nose: small, defined -->
+    <path class="out-thin" d="M 122 118 Q 119 128, 116 136 Q 121 142, 128 138 Q 124 130, 122 118 Z" />
+
+    <!-- Mouth: BIG confident grin showing teeth -->
+    <path class="ink" d="
+      M 96 152
+      Q 122 178, 150 152
+      Q 140 168, 122 168
+      Q 104 168, 96 152 Z" />
+    <!-- Teeth row -->
+    <path class="hi" d="
+      M 102 156
+      Q 122 170, 144 156
+      Q 138 162, 122 162
+      Q 108 162, 102 156 Z" />
+    <!-- Tooth divisions -->
+    <line class="out-thin" x1="116" y1="156" x2="115" y2="164"/>
+    <line class="out-thin" x1="124" y1="158" x2="124" y2="166"/>
+    <line class="out-thin" x1="132" y1="156" x2="133" y2="164"/>
+
+    <!-- Freckles -->
+    <circle class="ink" cx="84"  cy="138" r="1.6"/>
+    <circle class="ink" cx="92"  cy="144" r="1.4"/>
+    <circle class="ink" cx="152" cy="144" r="1.4"/>
+    <circle class="ink" cx="160" cy="138" r="1.6"/>
+
+    <!-- Head outline (drawn last so it's crisp on top) -->
+    <path class="out" d="
+      M 70 96
+      C 70 60, 100 40, 120 40
+      C 144 40, 172 60, 172 96
+      L 172 132
+      C 172 152, 162 168, 150 174
+      L 150 192
+      Q 150 200, 142 200
+      L 98 200
+      Q 90 200, 90 192
+      L 90 174
+      C 78 168, 70 152, 70 132
+      Z" />
+
+    <!-- Neck shadow under chin -->
+    <path class="hi" d="M 96 196 L 144 196 L 142 206 L 98 206 Z"/>
+  </g>
+
+  <!-- ===== BODY ===== -->
+  <g>
+    <!-- Jumpsuit silhouette (broad shoulders, slim waist) -->
+    <path class="suit" d="
+      M 56 232
+      Q 64 210, 96 206
+      L 144 206
+      Q 176 210, 184 232
+      L 196 304
+      Q 196 312, 188 312
+      L 138 312
+      Q 132 312, 132 304
+      L 132 282
+      L 108 282
+      L 108 304
+      Q 108 312, 102 312
+      L 52 312
+      Q 44 312, 44 304
+      Z" />
+
+    <!-- Suit body shading -->
+    <path class="hi" d="M 56 232 Q 84 220, 120 222 Q 122 254, 108 282 L 56 296 Q 52 264, 56 232 Z"/>
+
+    <!-- Suit belt -->
+    <rect x="84" y="264" width="72" height="6" class="ink"/>
+    <rect x="116" y="262" width="8" height="10" fill="none" stroke="currentColor" stroke-width="1.6"/>
+
+    <!-- Vault number plate on chest (number set at runtime) -->
+    <rect x="98" y="232" width="46" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+    <text x="121" y="250" text-anchor="middle"
+          font-family="ShareTechMono, monospace" font-size="16"
+          font-weight="bold" fill="currentColor" class="vb-num">111</text>
+
+    <!-- Collar -->
+    <path class="ink" d="M 96 206 L 120 220 L 144 206 L 138 220 L 120 230 L 102 220 Z"/>
+
+    <!-- Suit zipper -->
+    <line x1="120" y1="222" x2="120" y2="262" class="out-thin"/>
+    <circle cx="120" cy="262" r="2" class="ink"/>
+
+    <!-- Body outline -->
+    <path class="out" d="
+      M 56 232
+      Q 64 210, 96 206
+      L 144 206
+      Q 176 210, 184 232
+      L 196 304
+      Q 196 312, 188 312
+      L 138 312
+      Q 132 312, 132 304
+      L 132 282
+      L 108 282
+      L 108 304
+      Q 108 312, 102 312
+      L 52 312
+      Q 44 312, 44 304
+      Z" />
+  </g>
+
+  <!-- ===== ARMS — left arm at side, right arm thumbs-up ===== -->
+  <g>
+    <!-- LEFT ARM (viewer's left, character's right): hangs down -->
+    <path class="suit" d="
+      M 56 232
+      Q 38 254, 36 290
+      L 50 296
+      Q 56 270, 70 248 Z" />
+    <path class="out" d="
+      M 56 232
+      Q 38 254, 36 290
+      L 50 296
+      Q 56 270, 70 248" />
+    <!-- Hand fist -->
+    <ellipse cx="42" cy="296" rx="11" ry="9" class="skin"/>
+    <ellipse cx="42" cy="296" rx="11" ry="9" fill="none" stroke="currentColor" stroke-width="2"/>
+    <line x1="32" y1="294" x2="52" y2="294" class="out-thin"/>
+    <line x1="32" y1="298" x2="52" y2="298" class="out-thin"/>
+
+    <!-- RIGHT ARM (viewer's right): up across the body, fist near shoulder, THUMB UP -->
+    <!-- Upper arm + forearm shape -->
+    <path class="suit" d="
+      M 184 232
+      Q 208 218, 216 188
+      Q 220 168, 206 158
+      L 198 162
+      Q 208 174, 196 188
+      L 178 224 Z" />
+    <path class="out" d="
+      M 184 232
+      Q 208 218, 216 188
+      Q 220 168, 206 158
+      L 198 162
+      Q 208 174, 196 188
+      L 178 224" />
+
+    <!-- Fist + thumb -->
+    <g transform="translate(204,148)">
+      <!-- fist -->
+      <path class="skin" d="M -12 0 Q -16 -10, -8 -16 L 6 -16 Q 14 -10, 12 0 L 12 10 L -12 10 Z"/>
+      <path class="out"  d="M -12 0 Q -16 -10, -8 -16 L 6 -16 Q 14 -10, 12 0 L 12 10 L -12 10 Z"/>
+      <!-- knuckle lines -->
+      <line class="out-thin" x1="-7" y1="-2" x2="-7" y2="6"/>
+      <line class="out-thin" x1="-1" y1="-2" x2="-1" y2="6"/>
+      <line class="out-thin" x1="5"  y1="-2" x2="5"  y2="6"/>
+      <!-- THUMB -->
+      <path class="skin" d="M 6 -14 Q 18 -22, 22 -16 Q 24 -8, 14 -4 Z"/>
+      <path class="out"  d="M 6 -14 Q 18 -22, 22 -16 Q 24 -8, 14 -4 Z"/>
+    </g>
+  </g>
+
+  <!-- Boots -->
+  <g>
+    <path class="ink" d="M 44 304 L 110 304 L 108 316 L 46 316 Z"/>
+    <path class="ink" d="M 132 304 L 196 304 L 196 316 L 134 316 Z"/>
+  </g>
+</svg>

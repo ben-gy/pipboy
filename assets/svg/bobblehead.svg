@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" width="120" height="160" aria-label="Vault dweller bobblehead — original homage">
+  <defs>
+    <style>
+      .ink   { fill: currentColor; }
+      .skin  { fill: currentColor; opacity: 0.55; }
+      .suit  { fill: currentColor; opacity: 0.30; }
+      .hi    { fill: currentColor; opacity: 0.16; }
+      .out   { fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+      .out-thin { fill: none; stroke: currentColor; stroke-width: 1.2; stroke-linejoin: round; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <!-- Display base (oval pedestal) -->
+  <ellipse cx="60" cy="148" rx="40" ry="6" class="ink"/>
+  <rect x="38" y="128" width="44" height="20" class="hi"/>
+  <rect x="38" y="128" width="44" height="20" class="out"/>
+  <rect x="42" y="134" width="36" height="8" fill="none" stroke="currentColor" stroke-width="0.8"/>
+
+  <!-- Tiny body (so the head looks oversized — the joke of a bobblehead) -->
+  <path class="suit" d="
+    M 44 128
+    L 44 102
+    Q 44 90, 60 90
+    Q 76 90, 76 102
+    L 76 128 Z" />
+  <path class="out" d="
+    M 44 128
+    L 44 102
+    Q 44 90, 60 90
+    Q 76 90, 76 102
+    L 76 128" />
+  <line x1="60" y1="100" x2="60" y2="126" class="out-thin"/>
+
+  <!-- Spring (zigzag between body and head) -->
+  <path class="ink" d="M 60 90 q -3 -2, 0 -4 q 3 -2, 0 -4 q -3 -2, 0 -4 q 3 -2, 0 -4 z"/>
+
+  <!-- HEAD (giant) -->
+  <g transform="translate(0,4)">
+    <!-- Head silhouette -->
+    <path class="skin" d="
+      M 24 60
+      C 24 30, 42 14, 60 14
+      C 80 14, 96 30, 96 60
+      C 96 80, 84 90, 76 90
+      L 44 90
+      C 36 90, 24 80, 24 60 Z"/>
+
+    <!-- Hair tuft -->
+    <path class="ink" d="
+      M 36 22
+      C 42 8, 64 6, 72 22
+      C 80 12, 90 18, 90 30
+      C 78 30, 70 26, 60 30
+      C 50 26, 42 28, 36 22 Z"/>
+
+    <!-- Ears -->
+    <path class="skin" d="M 24 56 Q 16 56, 18 66 Q 22 76, 30 70 Z"/>
+    <path class="skin" d="M 96 56 Q 104 56, 102 66 Q 98 76, 90 70 Z"/>
+
+    <!-- Eyes (whites + pupils) -->
+    <ellipse cx="48" cy="50" rx="6" ry="5" fill="currentColor" opacity="0.05" stroke="currentColor" stroke-width="1.2"/>
+    <ellipse cx="72" cy="50" rx="6" ry="5" fill="currentColor" opacity="0.05" stroke="currentColor" stroke-width="1.2"/>
+    <circle class="ink" cx="49" cy="51" r="2"/>
+    <circle class="ink" cx="73" cy="51" r="2"/>
+
+    <!-- Nose -->
+    <path class="out-thin" d="M 60 56 Q 58 64, 56 70 Q 60 74, 64 70 Q 62 64, 60 56"/>
+
+    <!-- Big grin -->
+    <path class="ink" d="M 42 78 Q 60 92, 78 78 Q 70 86, 60 86 Q 50 86, 42 78 Z"/>
+    <line class="out-thin" x1="54" y1="82" x2="54" y2="86"/>
+    <line class="out-thin" x1="60" y1="82" x2="60" y2="86"/>
+    <line class="out-thin" x1="66" y1="82" x2="66" y2="86"/>
+
+    <!-- Freckles -->
+    <circle class="ink" cx="36" cy="68" r="1"/>
+    <circle class="ink" cx="84" cy="68" r="1"/>
+
+    <!-- Head outline -->
+    <path class="out" d="
+      M 24 60
+      C 24 30, 42 14, 60 14
+      C 80 14, 96 30, 96 60
+      C 96 80, 84 90, 76 90
+      L 44 90
+      C 36 90, 24 80, 24 60 Z"/>
+  </g>
+</svg>

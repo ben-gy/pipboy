@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a1208" />
+  <meta name="description" content="An unofficial fan homage to the Fallout Pip-Boy. Interactive, with games, easter eggs, and CRT charm." />
+  <title>PIP-OS v7.1.0.8 — ROBCO TERMLINK</title>
+  <link rel="stylesheet" href="./styles/main.css" />
+  <link rel="stylesheet" href="./styles/crt.css" />
+  <link rel="stylesheet" href="./styles/pipboy.css" />
+  <link rel="stylesheet" href="./styles/games.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230a1208'/%3E%3Ctext x='8' y='12' text-anchor='middle' fill='%235fff66' font-family='monospace' font-size='10' font-weight='bold'%3EP%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <div id="device" class="device" aria-label="Pip-Boy 3000 — fan homage">
+    <div class="bezel">
+      <div class="screen" id="screen">
+
+        <!-- BOOT OVERLAY -->
+        <div id="boot" class="boot" aria-live="polite"></div>
+
+        <!-- MAIN PIP-BOY UI (hidden until boot completes) -->
+        <main id="ui" class="ui" hidden>
+          <header class="topbar">
+            <nav class="tabs" role="tablist" aria-label="Pip-Boy tabs">
+              <button class="tab" role="tab" data-tab="stats" aria-selected="true">STAT</button>
+              <button class="tab" role="tab" data-tab="inv"   aria-selected="false">INV</button>
+              <button class="tab" role="tab" data-tab="data"  aria-selected="false">DATA</button>
+              <button class="tab" role="tab" data-tab="map"   aria-selected="false">MAP</button>
+              <button class="tab" role="tab" data-tab="radio" aria-selected="false">RADIO</button>
+            </nav>
+            <div class="topmeta">
+              <span id="vault-tag" class="vault-tag" title="Your assigned Vault">VAULT —</span>
+              <span id="battery" class="battery" title="Fusion cell"><span class="bar"></span><span class="bv">100%</span></span>
+            </div>
+          </header>
+
+          <nav class="subtabs" id="subtabs" role="tablist" aria-label="Sub-tabs"></nav>
+
+          <section id="content" class="content" role="tabpanel" tabindex="0"></section>
+
+          <footer class="statusbar" aria-label="Status">
+            <span class="stat"><label>HP</label><span class="bar"><span id="bar-hp" class="fill"></span></span><span id="num-hp" class="num">100</span></span>
+            <span class="stat"><label>AP</label><span class="bar"><span id="bar-ap" class="fill"></span></span><span id="num-ap" class="num">100</span></span>
+            <span class="stat"><label>RAD</label><span class="bar rad"><span id="bar-rad" class="fill"></span></span><span id="num-rad" class="num">0</span></span>
+            <span class="stat"><label>CAPS</label><span id="num-caps" class="num">0</span></span>
+            <span class="stat"><label>LVL</label><span id="num-lvl" class="num">1</span></span>
+            <span class="stat"><label>WGT</label><span id="num-wgt" class="num">0/200</span></span>
+          </footer>
+        </main>
+
+        <!-- Easter-egg layers -->
+        <div id="standby" class="overlay standby" hidden></div>
+        <div id="screensaver" class="overlay screensaver" hidden><div class="ss-vb"></div></div>
+        <div id="stranger" class="overlay stranger" hidden></div>
+        <div id="codsworth" class="codsworth" hidden></div>
+        <div id="toasts" class="toasts" aria-live="polite" aria-atomic="true"></div>
+
+        <!-- Hidden console (toggled with ~) -->
+        <div id="console" class="console" hidden>
+          <span class="prompt">&gt;</span>
+          <input id="console-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Console" />
+          <div id="console-out" class="out"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chrome-meta">
+      <span>ROBCO IND. (TM)</span>
+      <span class="dot"></span>
+      <span>PIP-OS&reg; v7.1.0.8</span>
+      <span class="dot"></span>
+      <button id="theme-cycle" class="chrome-btn" title="Cycle phosphor color (Ctrl+Shift+P)">PHOSPHOR</button>
+      <span class="dot"></span>
+      <button id="about-btn" class="chrome-btn" title="About this fan homage">ABOUT</button>
+    </div>
+  </div>
+
+  <dialog id="about-dialog" class="about-dialog">
+    <h2>About — PIP-OS Terminal</h2>
+    <p><strong>Unofficial fan project.</strong> Not affiliated with, endorsed by, or sponsored by Bethesda Softworks LLC or ZeniMax Media. Fallout, Pip-Boy, Vault-Tec, ROBCO, and Vault Boy are trademarks of their respective owners. This is a non-commercial homage by Ben Richardson.</p>
+    <p>Vanilla HTML / CSS / JS — no dependencies, no tracking, no backend. All visuals are original SVG / CSS; all sounds are synthesized via the Web Audio API.</p>
+    <p><strong>Hidden controls:</strong> press <kbd>~</kbd> for the developer console (try <code>tgm</code>, <code>tcl</code>, <code>showracemenu</code>, <code>coc qasmoke</code>, <code>player.additem caps 1000</code>, <code>goto 22</code>, <code>wildwasteland</code>). Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> to cycle phosphor color. There is also a famous code involving arrows, two letters, and a button.</p>
+    <p style="text-align:right;"><button id="about-close" autofocus>OK</button></p>
+  </dialog>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>

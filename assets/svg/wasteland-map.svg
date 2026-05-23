@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%" aria-label="Wasteland map" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <pattern id="hatch-mountain" patternUnits="userSpaceOnUse" width="6" height="6">
+      <path d="M0,6 L6,0" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    <pattern id="hatch-ruin" patternUnits="userSpaceOnUse" width="4" height="4">
+      <path d="M0,0 L4,4 M-1,3 L1,5 M3,-1 L5,1" stroke="currentColor" stroke-width="0.4" opacity="0.6"/>
+    </pattern>
+    <pattern id="dots" patternUnits="userSpaceOnUse" width="8" height="8">
+      <circle cx="4" cy="4" r="0.6" fill="currentColor" opacity="0.5"/>
+    </pattern>
+    <radialGradient id="rad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="currentColor" stop-opacity="0.5"/>
+      <stop offset="60%" stop-color="currentColor" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .frm    { fill: none; stroke: currentColor; stroke-width: 0.8; opacity: 0.7; }
+      .grid   { stroke: currentColor; stroke-width: 0.4; opacity: 0.10; fill: none; }
+      .coast  { fill: none; stroke: currentColor; stroke-width: 1.2; opacity: 0.8; }
+      .river  { fill: none; stroke: currentColor; stroke-width: 1.6; opacity: 0.7; }
+      .road   { fill: none; stroke: currentColor; stroke-width: 1.0; stroke-dasharray: 5 4; opacity: 0.55; }
+      .road-major { fill: none; stroke: currentColor; stroke-width: 1.6; opacity: 0.7; }
+      .lbl    { font-family: ShareTechMono, monospace; font-size: 9px; fill: currentColor; opacity: 0.65; }
+      .lbl-big{ font-family: ShareTechMono, monospace; font-size: 10px; fill: currentColor; letter-spacing: 1px; opacity: 0.85; }
+      .lbl-tiny { font-family: ShareTechMono, monospace; font-size: 7px; fill: currentColor; opacity: 0.55; }
+      .key    { fill: none; stroke: currentColor; stroke-width: 0.6; opacity: 0.6; }
+    </style>
+  </defs>
+
+  <!-- ===== FRAME + GRID ===== -->
+  <rect x="2" y="2" width="796" height="496" class="frm"/>
+  <g class="grid">
+    <path d="M 0 100 H 800 M 0 200 H 800 M 0 300 H 800 M 0 400 H 800
+             M 100 0 V 500 M 200 0 V 500 M 300 0 V 500 M 400 0 V 500
+             M 500 0 V 500 M 600 0 V 500 M 700 0 V 500"/>
+  </g>
+  <!-- corner crosshair ticks -->
+  <g class="key">
+    <path d="M 2 12 H 12 M 12 2 V 12 M 788 2 V 12 M 798 12 H 788 M 2 488 H 12 M 12 498 V 488 M 788 498 V 488 M 798 488 H 788"/>
+  </g>
+
+  <!-- Coordinate stamps -->
+  <text x="6" y="14" class="lbl-tiny">38.89°N 077.03°W</text>
+  <text x="700" y="14" class="lbl-tiny">SECTOR-007</text>
+  <text x="6" y="494" class="lbl-tiny">SCALE 1:240,000</text>
+  <text x="688" y="494" class="lbl-tiny">© ROBCO IND. 2076</text>
+
+  <!-- ===== TERRAIN ===== -->
+  <!-- Mountain massifs (filled with hatching) -->
+  <g>
+    <path d="M 30 70 q 60 -50 150 -10 q 80 30 50 110 q -50 70 -160 30 q -90 -30 -40 -130 z"
+          fill="url(#hatch-mountain)" stroke="currentColor" stroke-width="0.7" opacity="0.85"/>
+    <path d="M 60 80 q 40 -30 90 -10" class="frm"/>
+    <path d="M 80 130 q 50 20 100 0" class="frm"/>
+    <path d="M 510 50 q 100 -10 150 70 q 30 80 -50 120 q -110 30 -140 -50 q -30 -80 40 -140 z"
+          fill="url(#hatch-mountain)" stroke="currentColor" stroke-width="0.7" opacity="0.85"/>
+    <path d="M 540 90 q 60 -10 90 30" class="frm"/>
+
+    <!-- Ruined urban zone south (cross-hatching) -->
+    <path d="M 110 350 q 90 -40 220 -10 q 90 30 60 110 q -70 70 -220 40 q -110 -30 -60 -140 z"
+          fill="url(#hatch-ruin)" stroke="currentColor" stroke-width="0.7" opacity="0.85"/>
+    <!-- building blocks suggesting downtown ruins -->
+    <g opacity="0.7">
+      <rect x="160" y="380" width="14" height="20" fill="none" stroke="currentColor" stroke-width="0.6"/>
+      <rect x="180" y="372" width="10" height="28" fill="none" stroke="currentColor" stroke-width="0.6"/>
+      <rect x="196" y="384" width="16" height="16" fill="none" stroke="currentColor" stroke-width="0.6"/>
+      <rect x="220" y="376" width="12" height="24" fill="none" stroke="currentColor" stroke-width="0.6"/>
+      <rect x="240" y="382" width="14" height="18" fill="none" stroke="currentColor" stroke-width="0.6"/>
+      <rect x="260" y="372" width="10" height="28" fill="none" stroke="currentColor" stroke-width="0.6"/>
+    </g>
+  </g>
+
+  <!-- Forest patch (dot stipple) -->
+  <g>
+    <ellipse cx="430" cy="150" rx="60" ry="32" fill="url(#dots)" stroke="currentColor" stroke-width="0.6" opacity="0.7"/>
+    <text x="430" y="154" text-anchor="middle" class="lbl-tiny">PINE FOREST</text>
+  </g>
+
+  <!-- Coastline / island (Far Harbor) -->
+  <g>
+    <path class="coast" d="M 540 60 q 30 -20 80 0 q 40 20 30 60 q -40 30 -90 10 q -30 -10 -20 -70 z"/>
+  </g>
+
+  <!-- River + tributary -->
+  <path class="river" d="M 0 250 q 120 -30 220 -10 t 180 30 q 140 30 250 -10 q 60 -20 150 0"/>
+  <path class="river" d="M 380 240 q -10 50, -40 80 t -100 30" opacity="0.55"/>
+
+  <!-- Roads -->
+  <g>
+    <path class="road-major" d="M 120 120 L 300 200 L 520 220 L 680 180"/>
+    <path class="road"       d="M 180 380 L 380 320 L 520 220"/>
+    <path class="road"       d="M 520 220 L 640 360"/>
+    <path class="road"       d="M 220 400 L 380 320"/>
+    <path class="road"       d="M 60 420 L 220 400"/>
+    <path class="road"       d="M 720 300 L 800 280" stroke-dasharray="3 4"/>
+  </g>
+
+  <!-- Radiation hot zone -->
+  <circle cx="640" cy="380" r="84" fill="url(#rad)"/>
+  <circle cx="640" cy="380" r="84" fill="none" stroke="currentColor" stroke-dasharray="6 4" opacity="0.7"/>
+  <circle cx="640" cy="380" r="56" fill="none" stroke="currentColor" stroke-dasharray="3 5" opacity="0.5"/>
+  <text x="640" y="384" text-anchor="middle" class="lbl-big">[ HOT ZONE ]</text>
+  <text x="640" y="402" text-anchor="middle" class="lbl-tiny">RADS 600+ R/HR</text>
+
+  <!-- Small island/lake -->
+  <ellipse cx="730" cy="120" rx="34" ry="22" class="coast"/>
+  <text x="730" y="124" text-anchor="middle" class="lbl-tiny">ATLANTIC</text>
+
+  <!-- ===== MARKERS ===== -->
+  <g class="markers">
+    <g data-id="sanctuary"  transform="translate(120,120)">
+      <polygon class="marker" points="-10,-6 0,-12 10,-6 10,6 0,12 -10,6"/>
+      <text class="marker-label" x="0" y="-18" text-anchor="middle">SANCTUARY</text>
+    </g>
+    <g data-id="megaton"    transform="translate(220,180)">
+      <polygon class="marker" points="-10,-6 0,-12 10,-6 10,6 0,12 -10,6"/>
+      <text class="marker-label" x="0" y="-18" text-anchor="middle">MEGATON</text>
+    </g>
+    <g data-id="rivet_city" transform="translate(300,220)">
+      <polygon class="marker" points="-10,-6 0,-12 10,-6 10,6 0,12 -10,6"/>
+      <text class="marker-label" x="0" y="-18" text-anchor="middle">RIVET CITY</text>
+    </g>
+    <g data-id="diamond"    transform="translate(420,210)">
+      <polygon class="marker" points="-10,-6 0,-12 10,-6 10,6 0,12 -10,6"/>
+      <text class="marker-label" x="0" y="-18" text-anchor="middle">DIAMOND CITY</text>
+    </g>
+    <g data-id="goodneigh"  transform="translate(480,250)">
+      <polygon class="marker" points="-10,-6 0,-12 10,-6 10,6 0,12 -10,6"/>
+      <text class="marker-label" x="0" y="-18" text-anchor="middle">GOODNEIGHBOR</text>
+    </g>
+    <g data-id="vault111"   transform="translate(140,180)">
+      <polygon class="marker" points="-10,-6 0,-12 10,-6 10,6 0,12 -10,6"/>
+      <text class="marker-label" x="0" y="-18" text-anchor="middle">VAULT 111</text>
+    </g>
+    <g data-id="vault76"    transform="translate(380,80)">
+      <polygon class="marker" points="-10,-6 0,-12 10,-6 10,6 0,12 -10,6"/>
+      <text class="marker-label" x="0" y="-18" text-anchor="middle">VAULT 76</text>
+    </g>
+    <g data-id="newvegas"   transform="translate(640,260)">
+      <polygon class="marker" points="-10,-6 0,-12 10,-6 10,6 0,12 -10,6"/>
+      <text class="marker-label" x="0" y="-18" text-anchor="middle">NEW VEGAS</text>
+    </g>
+    <g data-id="mojave"     transform="translate(720,300)">
+      <polygon class="marker" points="-10,-6 0,-12 10,-6 10,6 0,12 -10,6"/>
+      <text class="marker-label" x="0" y="-18" text-anchor="middle">MOJAVE OUTPOST</text>
+    </g>
+    <g data-id="nukaworld"  transform="translate(580,140)">
+      <polygon class="marker" points="-10,-6 0,-12 10,-6 10,6 0,12 -10,6"/>
+      <text class="marker-label" x="0" y="-18" text-anchor="middle">NUKA-WORLD</text>
+    </g>
+    <g data-id="farharbor"  transform="translate(580,80)">
+      <polygon class="marker" points="-10,-6 0,-12 10,-6 10,6 0,12 -10,6"/>
+      <text class="marker-label" x="0" y="-18" text-anchor="middle">FAR HARBOR</text>
+    </g>
+    <g data-id="oasis"      transform="translate(220,400)">
+      <polygon class="marker" points="-10,-6 0,-12 10,-6 10,6 0,12 -10,6"/>
+      <text class="marker-label" x="0" y="-18" text-anchor="middle">OASIS</text>
+    </g>
+  </g>
+
+  <!-- Compass rose -->
+  <g transform="translate(740,440)" opacity="0.85">
+    <circle r="32" fill="none" stroke="currentColor"/>
+    <circle r="22" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.5"/>
+    <path d="M 0 -28 L 4 0 L -4 0 Z M 0 28 L 4 0 L -4 0 Z M -28 0 L 0 -4 L 0 4 Z M 28 0 L 0 -4 L 0 4 Z"
+          fill="currentColor" stroke="none"/>
+    <text x="0"   y="-22" text-anchor="middle" class="lbl-big">N</text>
+    <text x="22"  y="3"   text-anchor="middle" class="lbl-big">E</text>
+    <text x="0"   y="26"  text-anchor="middle" class="lbl-big">S</text>
+    <text x="-22" y="3"   text-anchor="middle" class="lbl-big">W</text>
+  </g>
+
+  <!-- Scale bar -->
+  <g transform="translate(20,470)" opacity="0.7">
+    <line x1="0" y1="0" x2="100" y2="0" stroke="currentColor" stroke-width="1"/>
+    <line x1="0" y1="-3" x2="0" y2="3" stroke="currentColor"/>
+    <line x1="50" y1="-2" x2="50" y2="2" stroke="currentColor"/>
+    <line x1="100" y1="-3" x2="100" y2="3" stroke="currentColor"/>
+    <text x="0"   y="-6" class="lbl-tiny">0</text>
+    <text x="50"  y="-6" class="lbl-tiny" text-anchor="middle">10 KM</text>
+    <text x="100" y="-6" class="lbl-tiny" text-anchor="end">20</text>
+  </g>
+</svg>

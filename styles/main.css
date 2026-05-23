@@ -1,0 +1,244 @@
+/* ==========================================================================
+   PIP-OS — main.css
+   Layout, custom properties, font-face, base typography.
+   ========================================================================== */
+
+@font-face {
+  font-family: "VT323";
+  src: url("../assets/fonts/vt323.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ShareTechMono";
+  src: url("../assets/fonts/share-tech-mono.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Phosphor palette — themable. Default: green. */
+  --phosphor: #5fff66;
+  --phosphor-dim: #2fa838;
+  --phosphor-glow: #5fff6655;
+  --phosphor-deep: #0a1208;
+  --phosphor-mid: #102912;
+  --phosphor-line: #1f4a26;
+
+  --bg: #000;
+  --device-bg: #1a1a1a;
+  --device-edge: #050505;
+
+  --font-pip: "VT323", "ShareTechMono", "Courier New", monospace;
+  --font-mono: "ShareTechMono", "VT323", "Courier New", monospace;
+
+  --tab-h: 44px;
+  --subtab-h: 28px;
+  --status-h: 36px;
+
+  --t-fast: 80ms;
+  --t-med: 220ms;
+  --t-slow: 600ms;
+}
+
+[data-theme="amber"] {
+  --phosphor: #ffb14a;
+  --phosphor-dim: #b07320;
+  --phosphor-glow: #ffb14a55;
+  --phosphor-deep: #150a02;
+  --phosphor-mid: #2c1605;
+  --phosphor-line: #5a3110;
+}
+
+[data-theme="blue"] {
+  --phosphor: #6fd6ff;
+  --phosphor-dim: #2c7099;
+  --phosphor-glow: #6fd6ff55;
+  --phosphor-deep: #02101a;
+  --phosphor-mid: #082236;
+  --phosphor-line: #154a72;
+}
+
+[data-theme="white"] {
+  --phosphor: #f1f1f1;
+  --phosphor-dim: #888;
+  --phosphor-glow: #ffffff55;
+  --phosphor-deep: #000;
+  --phosphor-mid: #1a1a1a;
+  --phosphor-line: #444;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--phosphor);
+  font-family: var(--font-pip);
+  font-size: 22px;
+  line-height: 1.15;
+  -webkit-font-smoothing: never;
+  font-smooth: never;
+  text-rendering: geometricPrecision;
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+button:focus-visible,
+[tabindex]:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--phosphor);
+  outline-offset: 2px;
+}
+
+kbd {
+  font-family: var(--font-mono);
+  background: var(--phosphor-mid);
+  padding: 1px 6px;
+  border: 1px solid var(--phosphor-line);
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+/* ----- Device chrome ----------------------------------------------------- */
+
+.device {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(ellipse at center, #1d1d1d 0%, #050505 70%, #000 100%);
+  padding: 24px;
+}
+
+.bezel {
+  width: min(1100px, 96vw);
+  height: min(720px, 92vh);
+  background: linear-gradient(180deg, #2a2a2a 0%, #131313 100%);
+  border: 2px solid #000;
+  border-radius: 18px;
+  box-shadow:
+    0 0 0 6px #0c0c0c,
+    0 0 0 8px #2a2a2a,
+    0 22px 60px rgba(0,0,0,0.75),
+    inset 0 0 0 2px #444;
+  padding: 18px;
+  position: relative;
+}
+
+.bezel::before {
+  /* rivets */
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 14px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 14px 14px, #555 2px, transparent 3px),
+    radial-gradient(circle at calc(100% - 14px) 14px, #555 2px, transparent 3px),
+    radial-gradient(circle at 14px calc(100% - 14px), #555 2px, transparent 3px),
+    radial-gradient(circle at calc(100% - 14px) calc(100% - 14px), #555 2px, transparent 3px);
+}
+
+.screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--phosphor-deep);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 80px rgba(0,0,0,0.85),
+    inset 0 0 14px var(--phosphor-glow);
+  isolation: isolate;
+}
+
+.chrome-meta {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  pointer-events: auto;
+}
+
+.chrome-meta .dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #555;
+}
+
+.chrome-btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #aaa;
+  letter-spacing: 1px;
+  cursor: pointer;
+  padding: 2px 6px;
+}
+.chrome-btn:hover { color: #fff; }
+
+/* ----- Mobile collapse --------------------------------------------------- */
+
+@media (max-width: 700px) {
+  .device { padding: 0; }
+  .bezel {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    border: 0;
+  }
+  .bezel::before { display: none; }
+  .screen { border-radius: 0; }
+  .chrome-meta { display: none; }
+  body { font-size: 18px; }
+}
+
+/* ----- About dialog ------------------------------------------------------ */
+
+.about-dialog {
+  background: var(--phosphor-deep);
+  color: var(--phosphor);
+  border: 2px solid var(--phosphor);
+  border-radius: 6px;
+  font-family: var(--font-pip);
+  font-size: 18px;
+  max-width: 560px;
+  padding: 18px 22px;
+}
+.about-dialog::backdrop { background: rgba(0, 0, 0, 0.85); }
+.about-dialog h2 { margin-top: 0; }
+.about-dialog button {
+  border: 1px solid var(--phosphor);
+  padding: 4px 14px;
+  cursor: pointer;
+}
+.about-dialog button:hover { background: var(--phosphor-mid); }
