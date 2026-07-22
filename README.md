@@ -83,13 +83,17 @@ This repo ships a `CNAME` for `pipboy.benrichardson.dev`. Push to a GitHub repo 
 | Fire / jump (canvas games) | `Space` |
 | Lockpicking torque | Hold `Space` |
 
-## License
+## license
 
-Code: MIT (see `LICENSE`).
+[GNU Affero General Public License v3.0 or later](./LICENSE), with an attribution
+requirement added under section 7(b) — see
+[ADDITIONAL-TERMS.md](./ADDITIONAL-TERMS.md).
 
-Original art assets and original parody text: dedicated to the public under
-**CC0 1.0**.
+In short: you may run, modify, redistribute and even sell this, but if you
+distribute it — or run a modified version where other people can reach it — you
+have to publish your source under the same licence and keep the attribution. A
+separate commercial licence without those obligations is available on request:
+<hi@ben.gy>.
 
-Trademarks referenced (Fallout, Pip-Boy, Vault-Tec, ROBCO, Vault Boy, etc.)
-remain the property of their respective owners; their use here is parodic
-homage in a non-commercial fan project.
+Third-party components keep their own licences — see
+[THIRD-PARTY-NOTICES.md](./THIRD-PARTY-NOTICES.md).

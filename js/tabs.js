@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 Ben Richardson — https://benrichardson.dev
+// Additional terms under AGPL-3.0 section 7(b) apply; see ADDITIONAL-TERMS.md.
 // tabs.js — top-level tab router. Lazy-loads each tab module.
 // Each tab module exports: mount(el, ctx) and unmount().
 

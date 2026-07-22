@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Copyright (C) 2026 Ben Richardson — https://benrichardson.dev
+// Additional terms under AGPL-3.0 section 7(b) apply; see ADDITIONAL-TERMS.md.
 // games/atomic-cmd.js — Missile Command clone defending 8 cities.
 
 import { makeShell, makeCanvas, loop, recordHighScore, gameOver, phosphor } from "./canvas-helpers.js";
